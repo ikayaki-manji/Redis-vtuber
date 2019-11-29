@@ -6,15 +6,33 @@ Vtuberハッカソン2019の作品の通信部分だけ切り出し
 
 （モデル・アセットは有償のものがあるのでオリジナルのシステムは公開しません）
 
-## やったこと
-VRヘッドセットのレンダリングと映像出力用のレンダリングを分けたい
+## RedisReadClient
+![RedisRead](https://user-images.githubusercontent.com/56545041/69856615-60387900-12d1-11ea-9f44-51012aeabf9c.png)
 
-ので、こういう構成にした
+パラメータ
 
-![システム構成](https://user-images.githubusercontent.com/56545041/69852954-f4eaa900-12c8-11ea-8729-695cf1033a6b.png)
+- Redis Host 
+    - RedisServerのHost．ローカルならlocalhost，他のPCにRedisサーバーたてるならxx.xx.xx.x(サーバーのipアドレス)
 
-結果、いいかんじになった
+- Redis Port
+    - RedisServerのPort．デフォルトなら6379
 
-![こいつを](https://user-images.githubusercontent.com/56545041/69852376-70e3f180-12c7-11ea-8b67-5e496576cf17.png)
+- LeftHand
+    - Redisサーバーから値を受け取る左手オブジェクト．(実機ではVIVEの左手コントローラ)
 
-![こうしたい](https://user-images.githubusercontent.com/56545041/69852402-80fbd100-12c7-11ea-9f78-29084ac44e6a.png)
+- RightHand
+    - Redisサーバーから値を受け取る右手オブジェクト．(実機ではVIVEの右手コントローラ)
+
+- Head
+    - Redisサーバーから値を受け取る頭オブジェクト．(実機ではVIVEのHeadSet)
+
+- UserID
+    - サーバに登録するユーザID．複数台つなげる時ようなので難しいことは考えずに0でおK
+
+- ResultHash
+    - Redisからとってきた内容を表示する（デバッグ用）
+
+## 注意
+Redisサーバーに接続できないとリクエスト待ちになってUnityEditorが止まるので注意
+
+RedisClientのContextMenuからConnectCheckを押して接続を確認してください
