@@ -28,3 +28,8 @@ Vtuberハッカソン2019の作品の通信部分だけ切り出し
 
 - UserID
     - サーバに登録するユーザID．複数台つなげる時ようなので難しいことは考えずに0でおK
+
+## 注意
+Redisサーバーに接続できないとリクエスト待ちになってUnityEditorが止まるので注意
+
+RedisClientのContextMenuからConnectCheckを押して接続を確認してください
