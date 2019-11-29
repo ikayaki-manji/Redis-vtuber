@@ -28,3 +28,19 @@ $ brew install Redis
 ```
 $ redis-server
 ```
+
+## 別のPCからRedisサーバーにアクセスする時
+Redisサーバーを立てているPCで
+
+(Windowsなら)redis-cli.exe
+
+(Macなら)
+```
+$ redis-cli
+```
+
+で、RedisClientを起動して、下記コマンドを入力
+
+```
+CONFIG SET protected-mode no
+```
